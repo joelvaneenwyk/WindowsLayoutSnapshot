@@ -9,7 +9,13 @@ on:
 jobs:
   build:
     runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [x86]
+        config: [Debug, Release]
 
+    name: "⚙️ ${{ matrix.platform }} - ${{ matrix.config }}"
     steps:
       - uses: actions/checkout@v4
         with:
@@ -27,4 +33,4 @@ jobs:
         run: msbuild WindowsLayoutSnapshot.sln /t:Restore
 
       - name: Build solution
-        run: msbuild WindowsLayoutSnapshot.sln /p:Configuration=Release /p:Platform="x86"
+        run: msbuild WindowsLayoutSnapshot.sln /p:Configuration="${{ matrix.config }}" /p:Platform="${{ matrix.platform }}"
