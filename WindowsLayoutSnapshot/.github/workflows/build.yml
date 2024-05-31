@@ -1,0 +1,24 @@
+name: Build WindowsLayoutSnapshot Solution
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup MSBuild path
+      uses: microsoft/setup-msbuild@v1.0.2
+
+    - name: Build solution
+      run: msbuild WindowsLayoutSnapshot/WindowsLayoutSnapshot.sln /p:Configuration=Release /p:Platform="Any CPU"
