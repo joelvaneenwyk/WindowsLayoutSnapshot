@@ -1,6 +1,15 @@
 {
     "dotnet.preferCSharpExtension": false,
     "cSpell.words": [
-        "msbuild"
+        "Avalonia",
+        "clientdb",
+        "codeql",
+        "jadrsamara",
+        "lapo",
+        "luchini",
+        "mindeunix",
+        "msbuild",
+        "rwese",
+        "sienori"
     ]
 }
