@@ -1,4 +1,4 @@
-name: Build WindowsLayoutSnapshot Solution
+name: Build
 
 on:
   push:
