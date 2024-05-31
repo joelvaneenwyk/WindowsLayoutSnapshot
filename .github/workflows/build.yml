@@ -15,14 +15,20 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-        submodules: recursive
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
 
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.x
 
-    - name: Setup MSBuild path
-      uses: microsoft/setup-msbuild@v2
+      - name: Setup MSBuild path
+        uses: microsoft/setup-msbuild@v2
 
-    - name: Build solution
-      run: msbuild WindowsLayoutSnapshot.sln /p:Configuration=Release /p:Platform="Any CPU"
+      - name: Restore packages
+        run: msbuild WindowsLayoutSnapshot.sln /t:Restore
+
+      - name: Build solution
+        run: msbuild WindowsLayoutSnapshot.sln /p:Configuration=Release /p:Platform="x86"
