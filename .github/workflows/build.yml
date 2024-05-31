@@ -1,0 +1,36 @@
+name: Build WindowsLayoutSnapshot Solution
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [x86]
+        config: [Debug, Release]
+
+    name: "⚙️ ${{ matrix.platform }} - ${{ matrix.config }}"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.x
+
+      - name: Setup MSBuild path
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Restore packages
+        run: msbuild WindowsLayoutSnapshot.sln /t:Restore
+
+      - name: Build solution
+        run: msbuild WindowsLayoutSnapshot.sln /p:Configuration="${{ matrix.config }}" /p:Platform="${{ matrix.platform }}"

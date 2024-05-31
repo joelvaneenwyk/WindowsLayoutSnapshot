@@ -1,0 +1,13 @@
+{
+    "recommendations": [
+        "tintoy.msbuild-project-tools",
+        "aliasadidev.nugetpackagemanagergui",
+        "webfreak.debug",
+        "ziyasal.vscode-open-in-github",
+        "christian-kohler.path-intellisense",
+        "ms-vscode.powershell",
+        "ms-dotnettools.csdevkit",
+        "ms-dotnettools.csharp",
+        "k--kato.docomment"
+    ]
+}
