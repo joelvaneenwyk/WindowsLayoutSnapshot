@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WindowsLayoutSnapshot {
 
-    internal class Native {
+    internal static class Native {
 
         internal const long WS_EX_TOOLWINDOW = 0x00000080L;
         internal const long WS_EX_APPWINDOW = 0x00040000L;
@@ -134,7 +134,7 @@ namespace WindowsLayoutSnapshot {
             public int X;
             public int Y;
 
-            public POINT(int x, int y) {
+            private POINT(int x, int y) {
                 this.X = x;
                 this.Y = y;
             }
